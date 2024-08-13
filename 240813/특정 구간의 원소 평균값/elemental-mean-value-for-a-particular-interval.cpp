@@ -7,7 +7,7 @@ int main() {
 	int n;
 	cin >> n;
 	
-	int arr[MAX_N] = { 0 };
+	double arr[MAX_N] = { 0 };
 
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
@@ -16,8 +16,8 @@ int main() {
 	int ans = 0;
 
 	for (int i = 0; i < n; i++) {
-		for (int j = i; j < n; j++) {
-			if (i == j) { ans++; continue; }
+		ans++;
+		for (int j = i+1; j < n; j++) {
 			//cout << i << ' ' << j << endl;
 			double avr = 0;
 			double sum_val = 0;
@@ -27,7 +27,7 @@ int main() {
 			avr = static_cast<double>(sum_val) / (j - i + 1);
 			//cout << "sum_val: " << sum_val << endl;
 			//cout << "avr: " << avr << endl;
-			for (int k = i; k < j; k++) {
+			for (int k = i; k <= j; k++) {
 				//cout << avr << " == " << arr[k] << endl;
 				if (avr == arr[k]) { ans++; break; }
 			}
