@@ -17,11 +17,19 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = i; j < n; j++) {
-			int avr = (arr[i] + arr[j]) / (j - i + 1);
+			if (i == j) { ans++; continue; }
+			//cout << i << ' ' << j << endl;
+			double avr = 0;
+			double sum_val = 0;
+			for (int k = i; k <= j; k++) {
+				sum_val += arr[k];
+			}
+			avr = static_cast<double>(sum_val) / (j - i + 1);
+			//cout << "sum_val: " << sum_val << endl;
+			//cout << "avr: " << avr << endl;
 			for (int k = i; k < j; k++) {
-				if (arr[k] == avr) {
-					ans++; break;
-				}
+				//cout << avr << " == " << arr[k] << endl;
+				if (avr == arr[k]) { ans++; break; }
 			}
 		}
 	}
