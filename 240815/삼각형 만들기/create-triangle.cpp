@@ -13,7 +13,7 @@ int main() {
 
 	bool isThereAnswer = false;
 
-	int min_area = INT_MAX;
+	int max_area = INT_MIN;
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < 2; j++) {
@@ -62,7 +62,7 @@ int main() {
 				if (isThereValidTriangle) {
 					int area = x_dist * y_dist;
 
-					min_area = min(min_area, area);
+					max_area = max(max_area, area);
 
 					isThereAnswer = true;
 				}
@@ -76,6 +76,6 @@ int main() {
 		return 0;
 	}
 
-	cout << min_area * 2<< endl;
+	cout << max_area<< endl;
 	return 0;
 }
