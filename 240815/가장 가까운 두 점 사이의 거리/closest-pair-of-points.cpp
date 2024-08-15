@@ -2,10 +2,12 @@
 #include <iostream>
 #include <algorithm>
 #include <cstdlib>
+#include <climits>
 
 using namespace std;
 
 #define MAX_N 100
+
 int points[MAX_N][2];
 
 int main() {
@@ -23,9 +25,8 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = i+1; j < n; j++) {
-			int dist = abs(points[i][0] - points[j][0]) 
+			int dist = abs(points[i][0] - points[j][0])
 				+ abs(points[i][1] - points[j][1]);
-
 			min_dist = min(min_dist, dist);
 		}
 	}
