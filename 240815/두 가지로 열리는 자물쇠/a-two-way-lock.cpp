@@ -32,7 +32,7 @@ int main() {
 				if (
 					(abs(cmb1[0] - i) <= 2 || abs(cmb1[0] - i) >= n - 2)
 					&& (abs(cmb1[1] - j) <= 2 || abs(cmb1[1] - j) >= n - 2)
-					&& (abs(cmb1[2] - k) <= 2 || abs(cmb1[2] - j) >= n - 2)
+					&& (abs(cmb1[2] - k) <= 2 || abs(cmb1[2] - k) >= n - 2)
 					) {
 					ans++;
 					isCmb1Satisfied = true;
@@ -41,13 +41,13 @@ int main() {
 				if (
 					(abs(cmb2[0] - i) <= 2 || abs(cmb2[0] - i) >= n - 2)
 					&& (abs(cmb2[1] - j) <= 2 || abs(cmb2[1] - j) >= n - 2)
-					&& (abs(cmb2[2] - k) <= 2 || abs(cmb2[2] - j) >= n - 2)
+					&& (abs(cmb2[2] - k) <= 2 || abs(cmb2[2] - k) >= n - 2)
 					) {
 					ans++;
 					isCmb2Satisfied = true;
 				}
 
-				if (isCmb1Satisfied && isCmb2Satisfied) {
+				if (isCmb1Satisfied && isCmb2Satisfied) { // remove duplication
 					ans--;
 				}
 			}
