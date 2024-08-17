@@ -16,9 +16,15 @@ int main() {
 	int ans = 0;
 
 	for (int i = 0; i < n - 1; i++) {
-		while (arr[i] >= arr[i + 1]) {
-			arr[i]--;
-			ans++;
+		for (int j = 0; j < n - 1; j++) {
+			while (arr[j] >= arr[j + 1]) {
+				arr[j]--;
+				ans++;
+			}
+
+			if (arr[j + 1] <= arr[j]) {
+				break;
+			}
 		}
 	}
 
