@@ -1,6 +1,6 @@
 #include <iostream>
+#include <algorithm>
 #include <cmath>
-using namespace std;
 
 #define MAX_N 100
 
@@ -22,23 +22,24 @@ public:
 	~LineSegment() {}
 };
 
+bool cmp(LineSegment line1, LineSegment line2);
+
 int main() {
-	
 	// input
-	
 	int n;
-	cin >> n;
+	std::cin >> n;
 
 	LineSegment line[MAX_N];
 
 	for (int i = 0; i < n; i++) {
-		cin >> line[i].x_1 >> line[i].x_2;
+		std::cin >> line[i].x_1 >> line[i].x_2;
 		line[i].y_1 = 0;
 		line[i].y_2 = 1;
 		line[i].slope = (line[i].y_1 - line[i].y_2) / (line[i].x_1 - line[i].x_2);
 		//std::cout << "line[" << i << "].slope: " << line[i].slope << endl;
 	}
-	
+
+	std::sort(line, line + n, cmp);
 	// calculating ans
 
 	int ans = n; // n: number of lines
@@ -48,7 +49,7 @@ int main() {
 	int overlapped_line = 0;
 
 	for (int i = 0; i < n; i++) {
-		for (int j = i+1; j < n; j++) {
+		for (int j = i + 1; j < n; j++) {
 			if (line[i].slope * line[j].slope < 0) { // 두 선분의 기울기가 다를 때
 				if (line[i].slope > 0 && line[j].slope < 0) {
 					if (line[i].x_2 > line[j].x_2) {
@@ -56,7 +57,7 @@ int main() {
 						line[j].isOverlapped = true;
 					}
 				}
-				
+
 				if (line[i].slope < 0 && line[j].slope > 0) {
 					if (line[i].x_2 < line[j].x_2) {
 						line[i].isOverlapped = true;
@@ -65,14 +66,13 @@ int main() {
 				}
 			}
 			else if (line[i].slope * line[j].slope > 0) { // 두 선분의 기울기가 같을 때
-
 				if (line[i].slope > 0 && line[j].slope > 0) {
 					if (line[i].x_2 > line[j].x_2) {
 						line[i].isOverlapped = true;
 						line[j].isOverlapped = true;
 					}
 				}
-				
+
 				if (line[i].slope < 0 && line[j].slope < 0) {
 					if (line[i].x_2 < line[j].x_2) {
 						line[i].isOverlapped = true;
@@ -82,14 +82,17 @@ int main() {
 			}
 		}
 	}
+		for (int i = 0; i < n; i++) {
+			if (line[i].isOverlapped == true) { overlapped_line++; }
+		}
 
-	for (int i = 0; i < n; i++) {
-		if (line[i].isOverlapped == true) { overlapped_line++; }
-	}
+		ans -= overlapped_line;
 
-	ans -= overlapped_line;
+		std::cout << ans << std::endl;
 
-	std::cout << ans << endl;
+		return 0;
+}
 
-	return 0;
+bool cmp(LineSegment line1, LineSegment line2) {
+	return line1.x_1 < line2.x_1;
 }
