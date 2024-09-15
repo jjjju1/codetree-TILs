@@ -16,7 +16,7 @@ int main() {
 	else if (9 <= a && a <= 11) {
 		cout << "Fall";
 	}
-	else if (12 <= a && a <= 2) {
+	else {
 		cout << "Winter";
 	}
 }
