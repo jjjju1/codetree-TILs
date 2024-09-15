@@ -7,6 +7,5 @@ int main() {
 	int a, b;
 	cin >> a >> b;
 	a += 87;
-	b % 10;
-	cout << a << '\n' << b;
+	cout << a << '\n' << b % 10;
 }
